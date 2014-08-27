@@ -8,18 +8,10 @@ router.get('/', function(req, res) {
     if (req.cookies) {
         if (req.cookies.user_id) {
             User.findById(req.cookies.user_id, function(userErr, user) {
-                Message.find({}).sort('time').exec(function(messageErr, messages) {
-                    if (userErr || messageErr) {
-                        res.render('index', { visited: false });
-                    }
-                    formatTime = []
-                    names = []
-                    for (var i = 0; i < messages.length; i++) {
-                        formatTime[i] = getFormatTime(messages[i].time);
-                    }
-                    res.render('index', { visited: true, user: user,
-                        messages: messages, formatTime: formatTime });
-                });
+                if (userErr) {
+                    res.render('index', { visited: false });
+                }
+                res.render('index', { visited: true, user: user });
             });
         } else {
             res.render('index', { visited: false });
