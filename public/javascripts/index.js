@@ -42,6 +42,8 @@ $(function() {
             if (data['success']) {
                 socket.emit('newUser', name);
                 flag = false;
+                $('#message-form').find('[name="user_id"]').val(data['user_id']);
+                $('#message-form').find('[name="username"]').val(name);
                 $('#my-modal').modal('hide');
             } else {
                 $('.wrong').fadeOut(500, function() {

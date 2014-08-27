@@ -15,7 +15,7 @@ router
                 res.json({ success: false });
             }
             res.cookie('user_id', user._id);
-            res.json({ success: true });
+            res.json({ success: true, user_id: user._id });
         })
     });
 
