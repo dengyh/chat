@@ -5,6 +5,7 @@ body, html, content {
 body {
       padding: 50px;
       font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+      font-family: "Microsoft YaHei";
       background-color: rgb(50,50,50);
 }
 
