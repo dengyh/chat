@@ -8,7 +8,8 @@ block content
                     h4.modal-title(id='my-modal-title') Welcome to chat room
                 .modal-body
                     if visited
-                        h5 Welcome back, #{user.name}
+                        h5 Welcome back,
+                            span(id='last-name') #{user.name}
                         button.btn.btn-primary(id='come-back') Enter
                     else
                         form(role='form', id='name-form')

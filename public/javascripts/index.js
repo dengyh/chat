@@ -18,6 +18,8 @@ $(function() {
     });
 
     $('#come-back').click(function() {
+        var name = $('#last-name').html();
+        socket.emit('newUser', name);
         flag = false;
         $('#my-modal').modal('hide');
     });
@@ -38,6 +40,7 @@ $(function() {
             'name': name
         }, function(data) {
             if (data['success']) {
+                socket.emit('newUser', name);
                 flag = false;
                 $('#my-modal').modal('hide');
             } else {
@@ -72,6 +75,12 @@ $(function() {
         $('.chat-box').append('<p><a href="/user/home/' + user_id + '"><span class="username">' +
             username + '</span></a> : ' + content + '<p class="time">—— ' +
             getFormatTime(time) + '</p></p>');
+        $('.chat-box').children('p').fadeIn(500);
+    });
+
+    socket.on('newUser', function(username) {
+        $('.chat-box').append('<p class="new-user"><span class="username">' + username +
+            '</span> come into chat room</p>');
         $('.chat-box').children('p').fadeIn(500);
     });
 
